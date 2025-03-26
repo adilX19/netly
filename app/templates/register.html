@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <style>
+        .flash {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid;
+            border-radius: 5px;
+        }
+        .flash.success {
+            color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .flash.error {
+            color: #F44336;
+            border-color: #F44336;
+        }
+    </style>
+
+</head>
+<body>    
+    <h1>Register</h1>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div>
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/register">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</body>
+</html>
